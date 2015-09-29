@@ -28,6 +28,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'mini_magick'
 gem 'carrierwave'
+
+gem 'kaminari'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
