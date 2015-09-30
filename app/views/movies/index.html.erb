@@ -1,4 +1,26 @@
 <h1>Rotten Mangoes</h1>
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:title, "Search by title:") %>
+  <%= text_field_tag(:title) %>
+  <br>
+  <%= label_tag(:director, "Search by director:") %>
+  <%= text_field_tag(:director) %>
+  <br>
+
+  <%= label_tag(:duration, "Select the duration:") %>
+  <%= select_tag(:duration, options_for_select(
+  [
+    ['', ''],
+    ['Under 90 minutes', '< 90'],
+    ['Between 90 and 120 minutes', 'between 90 and 120'],
+    ['Over 120 minutes', '> 120'],
+  ]
+  )) %>
+  <br>
+  <%= submit_tag("Search") %>
+<% end %>
+<hr>
 <%= link_to "Submit a movie!", new_movie_path %>
 <hr>
 <% @movies.each do |movie| %>

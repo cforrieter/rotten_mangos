@@ -42,7 +42,22 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def search
+
+    # @movies = Movie.where("title like ? AND director like ? AND runtime_in_minutes #{params[:duration]}", "%#{params[:title]}%", "%#{params[:director]}%")
+    @movies = Movie.where("title like ?", "%#{params[:title]}%").where("director like ?", "%#{params[:director]}%").where(movie_durationn_query[params[:duration]])
+  end
+
   protected
+
+  def movie_duration_query
+    field = "runtime_in_minutes "
+    {
+      '< 90' =>  field + '< 90',
+      'between 90 and 120' => field + 'between 90 and 120',
+      '> 120' => field + '> 120'
+    }
+  end
 
   def movie_params
     params.require(:movie).permit(
