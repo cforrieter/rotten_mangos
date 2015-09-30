@@ -49,6 +49,7 @@ class MoviesController < ApplicationController
     @movies = @movies.send(query) if query
   end
 
+  protected
 
   def movie_duration_query
   {
@@ -57,10 +58,6 @@ class MoviesController < ApplicationController
     'long' => :greater_than_120_minutes
   }
   end
-
-  protected
-
-  
   
 
   def movie_params
