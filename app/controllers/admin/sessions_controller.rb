@@ -1,8 +1,8 @@
-class Admin::SessionsController < ApplicationController
+class Admin::SessionsController < Admin::UsersController
+  before_filter :restrict_access
 
-  def create
+  def create  
     user = User.find(params[:user_id])
-    
     session[:admin_id] = session[:user_id]
     session[:user_id] = params[:user_id]
     redirect_to movies_path, notice: "Logged in as #{user.firstname}!"

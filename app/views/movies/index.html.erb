@@ -12,9 +12,9 @@
   <%= select_tag(:duration, options_for_select(
   [
     ['', ''],
-    ['Under 90 minutes', '< 90'],
-    ['Between 90 and 120 minutes', 'between 90 and 120'],
-    ['Over 120 minutes', '> 120'],
+    ['Under 90 minutes', 'short'],
+    ['Between 90 and 120 minutes', 'medium'],
+    ['Over 120 minutes', 'long'],
   ]
   )) %>
   <br>

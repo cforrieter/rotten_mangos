@@ -9,6 +9,12 @@ class Movie < ActiveRecord::Base
   validates :release_date, presence: true
   validate :release_date_is_in_the_future
 
+  scope :search_by_title, ->(title) { where("title like ?", "%#{title}%") }
+  scope :search_by_director, ->(director) { where("director like ?", "%#{director}%") }
+  scope :less_than_90_minutes, -> { where("runtime_in_minutes < 90") }
+  scope :between_90_and_120_minutes, -> { where("runtime_in_minutes between 90 and 120") }
+  scope :greater_than_120_minutes, -> { where("runtime_in_minutes > 120") }
+  
   def review_average
     reviews.sum(:rating_out_of_ten)/reviews.size if reviews.size > 0
   end
