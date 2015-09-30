@@ -13,9 +13,14 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user = User.find(session[:user_id]) if session[:user_id]
   end
 
+  def admin_user
+    @current_user = User.find(session[:admin_id]) if session[:admin_id]
+  end
+
+  helper_method :admin_user
   helper_method :current_user
 
 end
