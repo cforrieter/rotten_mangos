@@ -29,6 +29,8 @@ gem 'mini_magick'
 gem 'carrierwave'
 
 gem 'kaminari'
+
+gem 'bootstrap-sass'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

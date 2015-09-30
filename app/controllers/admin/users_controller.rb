@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-
+    UserMailer.delete_email(@user).deliver_now
     redirect_to admin_users_path, notice: "#{@user.full_name} successfully deleted."
 
   end
@@ -50,7 +50,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def restrict_access
-    if !current_user || current_user.admin == false
+    if !current_user || !current_user.admin
       flash[:alert] = "You must be an admin to go there."
       redirect_to root_path
     end
