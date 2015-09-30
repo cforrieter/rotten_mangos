@@ -43,10 +43,10 @@ class MoviesController < ApplicationController
   end
 
   def search
-    # @movies = Movie.where("title like ? AND director like ? AND runtime_in_minutes #{params[:duration]}", "%#{params[:title]}%", "%#{params[:director]}%")
     query = movie_duration_query[params[:duration]]
-    @movies = Movie.search_by_title(params[:title]).search_by_director(params[:director])
+    @movies = Movie.search_by_title_and_director(params[:query])
     @movies = @movies.send(query) if query
+    @movies
   end
 
   protected

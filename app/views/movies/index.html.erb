@@ -1,11 +1,8 @@
 <h1>Rotten Mangoes</h1>
 
 <%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:title, "Search by title:") %>
-  <%= text_field_tag(:title) %>
-  <br>
-  <%= label_tag(:director, "Search by director:") %>
-  <%= text_field_tag(:director) %>
+  <%= label_tag(:query, "Search by title and director:") %>
+  <%= text_field_tag(:query) %>
   <br>
 
   <%= label_tag(:duration, "Select the duration:") %>
